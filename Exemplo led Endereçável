@@ -1,0 +1,25 @@
+#include <Adafruit_NeoPixel.h>
+#include <FastLED.h>
+
+Adafruit_NeoPixel led1(30, 2, NEO_RGB + NEO_KHZ800);
+
+void setup() {
+  pinMode(2, OUTPUT);
+  led1.begin();
+  led1.setBrightness(255);
+}
+
+void loop() {
+  led1.clear();
+  for (int i = 0; i < 30; i++)
+  {
+
+    led1.setPixelColor(i - 1, 0, 0, 0);
+    led1.setPixelColor(i, random(255), random(255), random(255));
+    led1.setPixelColor(30 - i + 1, 0, 0, 0);
+    led1.setPixelColor(30 - i, random(255), random(255), random(255));
+
+    led1.show();
+    delay(50);
+  }
+}
